@@ -11,6 +11,12 @@ export const Register = (props) => {
     const verifyPassword = useRef()
     const passwordDialog = useRef()
 
+    const existingUserCheck = () => {
+        return fetch(`http://localhost:8088/users?email=${email.current.value}`)
+            .then(_ => _.json())
+            .then(user => !!user.length)
+    }
+
     const handleRegister = (e) => {
         e.preventDefault()
 
@@ -23,7 +29,7 @@ export const Register = (props) => {
                 "password": password.current.value
             }
 
-            return fetch("http://127.0.0.1:8088/register", {
+            return fetch("http://localhost:8088/users", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
