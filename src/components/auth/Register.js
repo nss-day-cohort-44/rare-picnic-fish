@@ -1,5 +1,5 @@
 import React, { useRef } from "react"
-import { Link } from "react-router-dom"
+import { Link, useHistory} from "react-router-dom"
 import "./Auth.css"
 
 export const Register = (props) => {
@@ -14,6 +14,7 @@ export const Register = (props) => {
     const profileImageUrl = useRef()
 
 
+    const history = useHistory()
 
     const handleRegister = (e) => {
         e.preventDefault()
@@ -43,9 +44,10 @@ export const Register = (props) => {
             })
                 .then(res => res.json())
                 .then(res => {
+                    debugger
                     if ("valid" in res && res.valid) {
                         localStorage.setItem("rare_user_id", res.token)
-                        props.history.push("/")
+                        history.push("/")
                     }
                 })
         } else {
