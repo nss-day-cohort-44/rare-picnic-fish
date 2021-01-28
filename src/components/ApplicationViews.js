@@ -2,7 +2,7 @@ import React from "react"
 import { Route } from "react-router-dom"
 import {CategoryProvider} from "./category/categorydataprovider"
 import {CategoryDashBoard}from "./category/categorydashboard"
-
+import {Categoryform} from "./category/CategoryForm"
 export const ApplicationViews = () => {
     return (
     <>
@@ -19,7 +19,7 @@ export const ApplicationViews = () => {
 
             <CategoryProvider>
             <Route exact path="/categories/create/:categoryId(\d+)" render={
-                            props => <categoryform {...props} />
+                            props => <Categoryform {...props} />
                         } />
             </CategoryProvider>
     </>

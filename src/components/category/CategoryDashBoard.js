@@ -12,16 +12,16 @@ useEffect(() =>{
 
 
 
-    return (
-        <>
-    <section className="categories">
-    <h3 className="kiduser__name">Create a New Category:</h3>
+return (
+    <>
+<section className="categories">
+<h3 className="kiduser__name">Create a New Category:</h3>
 
-    <section className="button1">
-    <Button  variant="primary" size="sm" onClick={() => props.history.push(`/categories/create/${props.category.id}`)}>
-    Create Category
-   </Button> 
-   </section>
-   </section>
-   </>
-   )
+<section className="button1">
+<Button  variant="primary" size="sm" onClick={() => props.history.push(`/categories/create/${props.category.id}`)}>
+Create Category
+</Button> 
+</section>
+</section>
+</>
+)
