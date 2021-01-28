@@ -1,7 +1,8 @@
 import React, { useContext, useRef, useEffect } from "react"
 import {CategoryContext} from "./CategoryDataProvider"
+import { Route,useHistory } from "react-router-dom"
 import "./category.css"
-import Button from 'react-bootstrap/Button'
+
 
 export const Categoryform = (props) =>{
     const{addCategory,getCategory} = useContext(CategoryContext)
@@ -12,15 +13,14 @@ export const Categoryform = (props) =>{
         getCategory()
     },[])
 
-    const constructNewCategory = () => {
-    const categoryLabel = label.current.value
-}
+    const history = useHistory()
 
- if(Label === ""){
+const contructNewLabel =() => {
+if(label === ""){
     window.alert("please select a label") 
  }else{
     addCategory({
-        label:categoryLabel
+        label:label.current.value
     })
     .then(() => props.history.push("/"))
  }
@@ -31,20 +31,21 @@ return (
     <fieldset>
             <div className="form-group">
                 <label htmlFor="categoryName">Category label: </label>
-                <input type="text" id="categoryName" ref={Label} required autoFocus className="form-control"
+                <input type="text" id="categoryName" ref={label} required autoFocus className="form-control"
                 placeholder="Category label" />
             </div>
         </fieldset>
 
         <section className="button">
-           <Button variant="primary" type="submit" className="button" 
+           <button type="submit" className="button" 
                 onClick={evt => {
                     evt.preventDefault() // Prevent browser from submitting the form
-                    ConstructNewCategory()
+                    contructNewLabel()
                 }}
                 className="btn btn-primary">
-                Save Category
-            </Button>
+                Create Category
+            </button>
             </section>
             </form> 
-)
+)}
+
