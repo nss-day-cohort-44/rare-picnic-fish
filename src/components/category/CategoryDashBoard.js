@@ -1,6 +1,6 @@
 import React,{useContext, useEffect,useState} from "react"
 import { Link } from "react-router-dom"
-import {CategoryContext} from "./categorydataprovider"
+import {CategoryContext} from "./CategoryDataProvider"
 
 export const CategoryDashBoard = (props) => {
     const{category,getCategory} = useContext(CategoryContext)
