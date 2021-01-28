@@ -10,6 +10,8 @@ export const Register = (props) => {
     const password = useRef()
     const verifyPassword = useRef()
     const passwordDialog = useRef()
+    const username = useRef()
+    const profileImageUrl = useRef()
 
     const existingUserCheck = () => {
         return fetch(`http://localhost:8088/users?email=${email.current.value}`)
@@ -23,10 +25,16 @@ export const Register = (props) => {
         if (password.current.value === verifyPassword.current.value) {
             const newUser = {
                 "username": email.current.value,
-                "first_name": firstName.current.value,
-                "last_name": lastName.current.value,
+                "firstName": firstName.current.value,
+                "lastName": lastName.current.value,
                 "email": email.current.value,
-                "password": password.current.value
+                "password": password.current.value,
+                "bio": bio.current.value,
+                "username": username.current.value,
+                "profileImageUrl": profileImageUrl.current.value,
+                "createdOn": Date.now(),
+                "active": 1,
+                "accountTypeId": 1
             }
 
             return fetch("http://localhost:8088/users", {
@@ -78,6 +86,18 @@ export const Register = (props) => {
                 <fieldset>
                     <label htmlFor="verifyPassword"> Verify Password </label>
                     <input ref={verifyPassword} type="password" name="verifyPassword" className="form-control" placeholder="Verify password" required />
+                </fieldset>
+                <fieldset>
+                    <label htmlFor="bio"> Bio </label>
+                    <input ref={bio} type="text" name="bio" className="form-control" placeholder="bio" required />
+                </fieldset>
+                <fieldset>
+                    <label htmlFor="username"> User Name </label>
+                    <input ref={username} type="text" name="username" className="form-control" placeholder="username" required />
+                </fieldset>
+                <fieldset>
+                    <label htmlFor="profileImageUrl"> Profile Image </label>
+                    <input ref={profileImageUrl} type="text" name="profileImageUrl" className="form-control" placeholder="profileImageUrl" required />
                 </fieldset>
                 <fieldset style={{
                     textAlign: "center"
