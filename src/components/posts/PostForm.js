@@ -24,7 +24,6 @@ export const PostForm = (props) => {
     return (
         
         <form className="PostForm">
-            {console.log("Do ye exist?")}
             <h2 className="PostForm__title">Title</h2>
             <fieldset>
                 <div className="form-group">
