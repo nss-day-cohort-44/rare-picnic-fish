@@ -22,10 +22,21 @@ const addCategory = (categories) =>{
     .then(getCategory)
 }
 
+const updateCategory = category =>{
+    return fetch(`http://localhost:8088/categories/${category.id}`,{
+        method:"PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(category)
+    })
+    .then(getCategory)
+}
+
 
 return(
     <CategoryContext.Provider value = {{
-        category,getCategory,addCategory
+        category,getCategory,addCategory,updateCategory
             }}>
         {props.children}
     </CategoryContext.Provider>

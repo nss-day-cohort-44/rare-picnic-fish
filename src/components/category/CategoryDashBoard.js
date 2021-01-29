@@ -5,6 +5,8 @@ import { Link } from "react-router-dom"
 
 export const CategoryDashBoard = () => {
     const{category,getCategory} = useContext(CategoryContext)
+
+    const[Category,setCategory] = useState({})
     
     const history = useHistory()
 
@@ -12,10 +14,17 @@ useEffect(() =>{
     getCategory()
  },[])
 
+ //  For finding the Category name
+ useEffect(() => {
+    const findCategory = category.find(a => a.id === parseInt(props.match.params.categoryId))|| {}
+    setCategory(findCategory)
+        },[Category])
+
 
 console.log(category)
 return (
     <>
+    <section className="users">
     <h2>Categories</h2>
     {
        category.map(C =>{
@@ -25,6 +34,17 @@ return (
         </Link>
        }) 
     }
+
+<section className="button1">
+    <button  variant="primary" size="sm" onClick={() => 
+        props.history.push(`/categories/edit/${Category.id}`)}>
+    Edit Category
+   </button> 
+   </section>
+   </section>
+
+   ]
+
 <section className="categories">
 <h3 className="kiduser__name">Create a New Category:</h3>
 
@@ -36,3 +56,9 @@ Create Category
 </section>
 </>
 )}
+
+
+{/* <Button variant="primary" size="sm" className="button" type="submit"
+onClick={() => {
+    props.history.push(`/activities/edit/${Activity.id}`)
+    }}>Edit Activity</Button> */}

@@ -4,6 +4,7 @@ import {CategoryProvider} from "./category/CategoryDataProvider"
 import {CategoryDashBoard}from "./category/CategoryDashBoard"
 import {Categoryform} from "./category/CategoryForm"
 import {CategoryDetail} from "./category/CategoryDetail"
+import {CategoryEditForm} from "./category/CategoryEditForm"
 export const ApplicationViews = (props) => {
     return (
     <>
@@ -27,6 +28,12 @@ export const ApplicationViews = (props) => {
             <CategoryProvider>
             <Route exact path="/categories/:categoryId(\d+)" render={
                 props => <CategoryDetail {...props} />
+            }/>
+            </CategoryProvider>
+
+            <CategoryProvider>
+            <Route exact path="/categories/edit/:categoryId(\d+)" render={
+                props => <CategoryEditForm {...props} />
             }/>
             </CategoryProvider>
     </>
