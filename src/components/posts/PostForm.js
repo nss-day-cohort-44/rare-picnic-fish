@@ -19,7 +19,7 @@ export const PostForm = (props) => {
             imageUrl,
             content
         })
-        .then(() => props.history.push("/newPost"))
+        .then(() => props.history.push("/myPost"))
     }
     return (
         
