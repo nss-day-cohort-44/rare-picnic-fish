@@ -1,12 +1,10 @@
 import React,{useContext, useEffect,useState} from "react"
 import {CategoryContext} from "./CategoryDataProvider"
 import { Route,useHistory } from "react-router-dom"
-import { Link } from "react-router-dom"
+import {CategoryCard} from "./CategoryCard"
 
-export const CategoryDashBoard = (props) => {
+export const CategoryDashBoard = () => {
     const{category,getCategory} = useContext(CategoryContext)
-
-    const[Category,setCategory] = useState({})
     
     const history = useHistory()
 
@@ -19,16 +17,12 @@ useEffect(() =>{
 console.log(category)
 return (
     <>
-   
+   <section className="users"> 
     <h2>Categories</h2>
     {
-       category.map(C =>{
-           console.log(C)
-        return <Link key={C.id} to={`/categories/${C.id}`}>
-            <h3>{C.label}</h3>
-        </Link>
-       }) 
+       category.map(C =>< CategoryCard key={C.id} category={C} />)
     }
+</section>
 <section className="categories">
 <h3 className="kiduser__name">Create a New Category:</h3>
 
