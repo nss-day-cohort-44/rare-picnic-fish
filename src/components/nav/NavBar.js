@@ -13,7 +13,11 @@ export const NavBar = () => {
             </li>
             <li className="navbar__item">
                 <Link className="navbar__link"  to={(localStorage.getItem("rare_user_id") === null) ?
-                "/login":"/"}>"Posts</Link>
+                "/login":"/"}>All Posts</Link>
+            </li>
+            <li className="navbar__item">
+                <Link className="navbar__link"  to={(localStorage.getItem("rare_user_id") === null) ?
+                "/login":"/myPosts"}>My Posts</Link>
             </li>
                     <>
                         <li className="navbar__item">
