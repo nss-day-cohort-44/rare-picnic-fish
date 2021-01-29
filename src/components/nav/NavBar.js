@@ -13,7 +13,15 @@ export const NavBar = () => {
             </li>
             <li className="navbar__item">
                 <Link className="navbar__link"  to={(localStorage.getItem("rare_user_id") === null) ?
-                "/login":"/"}>"Posts</Link>
+                "/login":"/"}>All Posts</Link>
+            </li>
+            <li className="navbar__item">
+                <Link className="navbar__link"  to={(localStorage.getItem("rare_user_id") === null) ?
+                "/login":"/myPosts"}>My Posts</Link>
+            </li>
+            <li className="navbar__item">
+                <Link className="navbar__link"  to={(localStorage.getItem("rare_user_id") === null) ?
+                "/login":"/newPost"}>New Post</Link>
             </li>
             <li className="nav-item">
                         <button className="nav-link fakeLink"
@@ -32,7 +40,7 @@ export const NavBar = () => {
             </li>
             <li className="navbar__item">
                 <Link className="navbar__link"  to={(localStorage.getItem("rare_user_id") === null) ?
-                "/login":"/"}>"Posts</Link>
+                "/login":"/"}>"All Posts</Link>
             </li>
             <li className="navbar__item">
                 <Link className="navbar__link" to="/login">Login</Link>

@@ -14,7 +14,6 @@ export const Register = () => {
     const profileImageUrl = useRef()
     const history = useHistory()
 
-
     const handleRegister = (e) => {
         e.preventDefault()
 
@@ -43,6 +42,7 @@ export const Register = () => {
             })
                 .then(res => res.json())
                 .then(res => {
+                    debugger
                     if ("valid" in res && res.valid) {
                         localStorage.setItem("rare_user_id", res.token)
                         history.push("/")
