@@ -2,9 +2,7 @@ import React, { useContext, useEffect, useState, useRef } from "react";
 import { PostContext } from "./PostProvider"
 
 export const PostForm = (props) => {
-    const { posts, getPosts, getPost, addPost} = useContext(PostContext)
-
-    const name = useRef(null)
+    const { getPosts, addPost} = useContext(PostContext)
 
     useEffect(() => {
         getPosts()
@@ -23,6 +21,7 @@ export const PostForm = (props) => {
         .then(() => props.history.push("/posts"))
     }
     return (
+        
         <form className="PostForm">
             <h2 className="PostForm__title">Title</h2>
             <fieldset>
@@ -33,19 +32,25 @@ export const PostForm = (props) => {
             </fieldset>
             <fieldset>
                 <div className="form-group">
+                    <label htmlFor="Post-Image"></label>
+                    <input type="text" id="Post-Image" ref={imageUrl} required autoFocus className="form-control" placeholder="Image URL" />
+                </div>
+            </fieldset>
+            <fieldset>
+                <div className="form-group">
                     <label htmlFor="Post-Content">Post Content: </label>
                     <input type="text" id="Post-Content" ref={content} required autoFocus className="form-control" placeholder="Post Content" />
                 </div>
             </fieldset>
-           
             <button type="submit"
                 onClick={evt => {
-                    evt.preventDefault() // Prevent browser from submitting the form
-                    constructNewPost()
+                    evt.preventDefault()
+                    addNewPost()
                 }}
                 className="btn btn-primary">
                 Save Post
             </button>
         </form>
+        
     )
 }
