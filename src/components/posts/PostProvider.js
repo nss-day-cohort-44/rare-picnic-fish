@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 
-export const AnimalContext = React.createContext()
+export const PostContext = React.createContext()
 
 export const PostProvider = (props) => {
     const [posts, setPosts] = useState([])
