@@ -6,13 +6,13 @@ export const PostProvider = (props) => {
     const [posts, setPosts] = useState([])
 
     const getPosts = () => {
-        return fetch("http://localhost:8088/posts")
+        return fetch("http://localhost:8088/myPosts")
         .then(res => res.json())
            .then(setPosts)
     }
 
     const getPostById = (id) => {
-       return fetch(`http://localhost:8088/posts/${ id }`)
+       return fetch(`http://localhost:8088/myPosts/${ id }`)
            .then(res => res.json())
    }
 
