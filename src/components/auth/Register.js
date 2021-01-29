@@ -1,8 +1,8 @@
 import React, { useRef } from "react"
-import { Link, useHistory} from "react-router-dom"
+import { Link, useHistory } from "react-router-dom"
 import "./Auth.css"
 
-export const Register = (props) => {
+export const Register = () => {
     const firstName = useRef()
     const lastName = useRef()
     const email = useRef()
@@ -12,8 +12,6 @@ export const Register = (props) => {
     const passwordDialog = useRef()
     const username = useRef()
     const profileImageUrl = useRef()
-
-
     const history = useHistory()
 
     const handleRegister = (e) => {
@@ -21,12 +19,12 @@ export const Register = (props) => {
 
         if (password.current.value === verifyPassword.current.value) {
             const newUser = {
-                "username": email.current.value,
                 "firstName": firstName.current.value,
                 "lastName": lastName.current.value,
                 "email": email.current.value,
                 "password": password.current.value,
                 "bio": bio.current.value,
+                "username": email.current.value,
                 "username": username.current.value,
                 "profileImageUrl": profileImageUrl.current.value,
                 "createdOn": Date.now(),
