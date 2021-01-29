@@ -7,6 +7,9 @@ export const PostForm = (props) => {
     const title = useRef(null)
     const imageUrl = useRef(null)
     const content = useRef(null)
+    const userId = useRef(null)
+    const categoryId = useRef(null)
+    const approved = useRef(null)
 
     useEffect(() => {
         getPosts()
@@ -14,12 +17,15 @@ export const PostForm = (props) => {
     
     const addNewPost = () => {
         addPost({ 
+            userId,
+            categoryId,
             title,
             publicationDate: Date.now(),
             imageUrl,
-            content
+            content,
+            approved
         })
-        .then(() => props.history.push("/myPost"))
+        .then(() => props.history.push("/myPosts"))
     }
     return (
         
