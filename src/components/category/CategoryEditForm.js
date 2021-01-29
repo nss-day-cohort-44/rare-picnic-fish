@@ -25,7 +25,8 @@ const handleControlledInputChange = (label) => {
     useEffect(() =>{
         getCategory()
     },[])
-
+    console.log(Category)
+    
     useEffect(() =>{
         getCategoryInEditMode()
     },[category])
