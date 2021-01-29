@@ -6,21 +6,21 @@ import "./category.css"
 export const CategoryEditForm = (props) =>{
     const{category,getCategory,updateCategory} = useContext(CategoryContext)
 
-    const[Category,setcategory] = useState({})
+    const[Category,setCategory] = useState({})
 
     const editMode = props.match.params.hasOwnProperty("categoryId")
 
 const handleControlledInputChange = (label) => {
     const newCategory = Object.assign({}, Category)
     newCategory[label.target.name] = label.target.value
-    setcategory(newCategory)
+    setCategory(newCategory)
     }
 
     const getCategoryInEditMode = () => {
-
+        if (editMode){
         const categoryId = parseInt(props.match.params.categoryId)
         const selectedCategory = category.find(a => a.id === categoryId) || {}
-        setcategory(selectedCategory)
+        setCategory(selectedCategory)}
     }
     useEffect(() =>{
         getCategory()
@@ -35,10 +35,11 @@ const constructNewCategory = () => {
     if(categoryId === 0){
         window.alert("please select a Label" )
     }else{
+        if (editMode){
         updateCategory({
             label:category.label
         })
-        .then(() => props.history.push("/"))
+        .then(() => props.history.push("/"))}
     }}
 
 return (
