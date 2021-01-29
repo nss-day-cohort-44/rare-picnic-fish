@@ -5,6 +5,8 @@ import {CategoryDashBoard}from "./category/CategoryDashBoard"
 import {Categoryform} from "./category/CategoryForm"
 import {CategoryDetail} from "./category/CategoryDetail"
 import {CategoryEditForm} from "./category/CategoryEditForm"
+import { PostForm } from "./posts/PostForm"
+import { PostProvider } from "./posts/PostProvider"
 export const ApplicationViews = (props) => {
     return (
     <>
@@ -36,5 +38,11 @@ export const ApplicationViews = (props) => {
                 props => <CategoryEditForm {...props} />
             }/>
             </CategoryProvider>
+
+            <PostProvider>
+                <Route path = "/newPost">
+                    <PostForm {...props} />
+                </Route>
+            </PostProvider>
     </>
     )}
