@@ -3,7 +3,7 @@ import {CategoryContext} from "./CategoryDataProvider"
 import { Route,useHistory } from "react-router-dom"
 import { Link } from "react-router-dom"
 
-export const CategoryDashBoard = () => {
+export const CategoryDashBoard = (props) => {
     const{category,getCategory} = useContext(CategoryContext)
 
     const[Category,setCategory] = useState({})
@@ -15,10 +15,10 @@ useEffect(() =>{
  },[])
 
  //  For finding the Category name
- useEffect(() => {
-    const findCategory = category.find(a => a.id === parseInt(props.match.params.categoryId))|| {}
-    setCategory(findCategory)
-        },[Category])
+//  useEffect(() => {
+//     const findCategory = category.find(a => a.id === parseInt(props.match.history.categoryId))|| {}
+//     setCategory(findCategory)
+//         },[Category])
 
 
 console.log(category)
@@ -43,8 +43,6 @@ return (
    </section>
    </section>
 
-   ]
-
 <section className="categories">
 <h3 className="kiduser__name">Create a New Category:</h3>
 
@@ -57,8 +55,3 @@ Create Category
 </>
 )}
 
-
-{/* <Button variant="primary" size="sm" className="button" type="submit"
-onClick={() => {
-    props.history.push(`/activities/edit/${Activity.id}`)
-    }}>Edit Activity</Button> */}

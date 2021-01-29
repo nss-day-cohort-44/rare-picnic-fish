@@ -1,5 +1,5 @@
 .categories{
-    display: flex;
+    display: list-item;
     flex-wrap: wrap;
     justify-content: space-between;
     border: 1px solid orange;

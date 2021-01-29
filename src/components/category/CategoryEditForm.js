@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useEffect } from "react"
+import React, { useContext, useRef, useEffect,useState } from "react"
 import {CategoryContext} from "./CategoryDataProvider"
 import { Route,useHistory } from "react-router-dom"
 import "./category.css"
@@ -6,12 +6,12 @@ import "./category.css"
 export const CategoryEditForm = (props) =>{
    const{category,updateCategory} = useContext(CategoryContext)
 
-const[category,setcategory] = useState({})
+const[Category,setcategory] = useState({})
 
 const editMode = props.match.params.hasOwnProperty("categoryId")
 
 const handleControlledInputChange = (label) => {
-    const newCategory = Object.assign({}, category)
+    const newCategory = Object.assign({}, Category)
     newCategory[label.target.name] = label.target.value
     setcategory(newCategory)
     }
