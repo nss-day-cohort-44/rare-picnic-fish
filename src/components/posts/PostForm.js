@@ -15,7 +15,7 @@ export const PostForm = (props) => {
             userId,
             categoryId, 
             title,
-            publicationDate,
+            publicationDate: Date.now(),
             imageUrl,
             content,
             approved
