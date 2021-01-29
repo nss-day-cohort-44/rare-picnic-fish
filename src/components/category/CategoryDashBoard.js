@@ -19,12 +19,12 @@ useEffect(() =>{
 console.log(category)
 return (
     <>
-   
     <h2>Categories</h2>
     {
        category.map(C =>{
            console.log(C)
-        return <Link key={C.id} to={`/categories/${C.id}`}>
+        return <Link key={C.id} to={(localStorage.getItem("rare_user_id") === null) ?
+        "/login":`/categories/${C.id}`}>
             <h3>{C.label}</h3>
         </Link>
        }) 
