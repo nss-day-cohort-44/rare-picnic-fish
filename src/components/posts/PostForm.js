@@ -1,28 +1,30 @@
-import React, { useContext, useEffect, useState, useRef } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import { PostContext } from "./PostProvider"
 
 export const PostForm = (props) => {
     const { getPosts, addPost} = useContext(PostContext)
+
+    const title = useRef(null)
+    const imageUrl = useRef(null)
+    const content = useRef(null)
 
     useEffect(() => {
         getPosts()
     }, [])
     
     const addNewPost = () => {
-        addPost({
-            userId,
-            categoryId, 
+        addPost({ 
             title,
             publicationDate: Date.now(),
             imageUrl,
-            content,
-            approved
+            content
         })
-        .then(() => props.history.push("/posts"))
+        .then(() => props.history.push("/newPost"))
     }
     return (
         
         <form className="PostForm">
+            {console.log("Do ye exist?")}
             <h2 className="PostForm__title">Title</h2>
             <fieldset>
                 <div className="form-group">
