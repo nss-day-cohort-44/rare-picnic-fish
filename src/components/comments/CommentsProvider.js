@@ -2,7 +2,7 @@ import React, { useState } from "react"
 
 export const CommentContext = React.createContext()
 
-export const CommentProvider = (props) => {
+export const CommentsProvider = (props) => {
     const [comments, setComments] = useState([])
 
     const getComments = () => {
