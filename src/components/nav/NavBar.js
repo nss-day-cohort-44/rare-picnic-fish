@@ -21,9 +21,13 @@ export const NavBar = () => {
             </li>
             <li className="navbar__item">
                 <Link className="navbar__link"  to={(localStorage.getItem("rare_user_id") === null) ?
+                "/login":"/categories"}>Category Manager</Link>
+            </li>
+            <li className="navbar__item">
+                <Link className="navbar__link"  to={(localStorage.getItem("rare_user_id") === null) ?
                 "/login":"/newPost"}>New Post</Link>
             </li>
-            <li className="nav-item">
+            <li className="navbar__item">
                         <button className="nav-link fakeLink"
                             onClick={() => {
                                 localStorage.removeItem("rare_user_id")

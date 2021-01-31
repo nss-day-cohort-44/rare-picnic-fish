@@ -6,6 +6,7 @@ import {Categoryform} from "./category/CategoryForm"
 import {CategoryDetail} from "./category/CategoryDetail"
 import {CategoryEditForm} from "./category/CategoryEditForm"
 import { PostForm } from "./posts/PostForm"
+import { PostList } from "./posts/PostList.js"
 import { PostProvider } from "./posts/PostProvider"
 export const ApplicationViews = (props) => {
     return (
@@ -15,8 +16,13 @@ export const ApplicationViews = (props) => {
             lineHeight: "1.75rem"
         }}>
         </main> */}
-            <CategoryProvider>
+            <PostProvider>
             <Route exact path="/">
+                <PostList {...props} />
+            </Route>
+            </PostProvider>
+            <CategoryProvider>
+            <Route exact path="/categories">
                 <CategoryDashBoard {...props} />
             </Route>
             </CategoryProvider>
