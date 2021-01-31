@@ -16,7 +16,7 @@ useEffect(() =>{
 return (
     <div className="posts">
     {
-        posts.map(p => <Post key={p.id} post={p} />)
+        posts.map(p => <Post key={p.user.id} post={p} />)
     }
     </div>
 )}

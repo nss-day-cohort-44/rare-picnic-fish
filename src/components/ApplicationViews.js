@@ -7,6 +7,7 @@ import {CategoryDetail} from "./category/CategoryDetail"
 import {CategoryEditForm} from "./category/CategoryEditForm"
 import { PostForm } from "./posts/PostForm"
 import { PostList } from "./posts/PostList.js"
+import { UserPostList } from "./posts/UserPostList.js"
 import { PostProvider } from "./posts/PostProvider"
 export const ApplicationViews = (props) => {
     return (
@@ -19,6 +20,11 @@ export const ApplicationViews = (props) => {
             <PostProvider>
             <Route exact path="/">
                 <PostList {...props} />
+            </Route>
+            </PostProvider>
+            <PostProvider>
+            <Route exact path="/myPosts">
+                <UserPostList {...props} />
             </Route>
             </PostProvider>
             <CategoryProvider>
