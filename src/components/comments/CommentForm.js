@@ -1,6 +1,6 @@
 import React, { useContext, useRef } from "react"
 import { CommentContext } from "./CommentsProvider"
-import "./Comments.css"
+import "./Comment.css"
 
 export const CommentForm = () => {
     const { addComment } = useContext(CommentContext)

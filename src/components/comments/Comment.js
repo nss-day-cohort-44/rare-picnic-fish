@@ -1,5 +1,5 @@
 import React from "react"
-import "./Comments.css"
+import "./Comment.css"
 
 export const Comment = ({ comment }) => (
     <section className="comment">

@@ -11,5 +11,8 @@ export const Post = ({ post }) => (
         </h3>
         <div className="post__title"><b>{post.category.label}</b></div>
         <div className="post__title">AUTHOR-{post.user.username}</div>
+        <button className = "post__comment__btn">
+            View Comments
+        </button>
     </section>
 )
