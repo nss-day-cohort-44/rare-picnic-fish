@@ -14,10 +14,6 @@ export const CommentList = (props) => {
     return (
         <>
             <h1>Comments</h1>
-
-            {/* <button onClick={() => history.push("/animals/create")}>
-                Make Reservation
-            </button> */}
             <div className="comments">
                 {
                     comments.map(comment => {

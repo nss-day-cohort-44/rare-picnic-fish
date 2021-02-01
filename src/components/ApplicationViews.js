@@ -12,6 +12,7 @@ import { UserPostList } from "./posts/UserPostList.js"
 import { PostProvider } from "./posts/PostProvider"
 import { CommentsProvider } from "./comments/CommentsProvider"
 import { CommentList } from "./comments/CommentList"
+import { CommentForm } from "./comments/CommentForm"
 
 export const ApplicationViews = (props) => {
     return (
@@ -60,15 +61,19 @@ export const ApplicationViews = (props) => {
             </CategoryProvider>
 
             <PostProvider>
-                <Route path = "/newPost">
-                    <PostForm {...props} />
-                </Route>
-            </PostProvider>
+                <CommentsProvider>
+                    <Route exact path = "/newPost">
+                        <PostForm {...props} />
+                    </Route>
 
-            <CommentsProvider>
-                <Route exact path = "/post/comments" render = {
-                    <CommentList {...props} />
-                }/>
-            </CommentsProvider>
+                    <Route exact path = "/post/comments/:postId(\d+)" render = {
+                        props => <CommentList {...props} />
+                    }/>
+
+                    <Route path = "/post/comments/:postId(\d+)" render = {
+                        props => <CommentForm {...props} />
+                    }/>
+                </CommentsProvider>
+            </PostProvider>
     </>
     )}

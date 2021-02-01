@@ -1,11 +1,15 @@
-import React, { useContext, useRef } from "react"
+import React, { useContext, useEffect, useRef } from "react"
 import { CommentContext } from "./CommentsProvider"
 import "./Comment.css"
 
-export const CommentForm = () => {
-    const { addComment } = useContext(CommentContext)
+export const CommentForm = (props) => {
+    const { comments, addComment, getComments } = useContext(CommentContext)
     const content = useRef("")
     const subject = useRef("")
+
+    useEffect(() => {
+        getComments()
+    }, [])
 
 
     const createNewComment = (props) => {
@@ -14,12 +18,14 @@ export const CommentForm = () => {
         if (content === "" || subject === "") {
             window.alert("Please fill out all fields")
         }
-        else {
-            addComment({
-                content: content.current.value,
+        else { 
+            return addComment({
+                postId: parseInt(props.match.params.postId),
+                authorId: localStorage.getItem("rare_user_id"),
                 subject: subject.current.value,
-            }).then(() => props.history.push("/"))
-            // COME BACK TO THIS. MUST PUSH TO SOMEWHERE CURRENTLY UNDEFINED
+                content: content.current.value,
+                createdOn: Date.now()
+            })
         }
     }
 
@@ -35,12 +41,15 @@ export const CommentForm = () => {
                 </fieldset>
                 <fieldset className="commentForm__content">
                     <label htmlFor="commentContent">Content: </label>
-                    <input type="text" id="commentSubject" ref={subject}/>
+                    <input type="text" id="commentSubject" ref={content}/>
                 </fieldset>
                 <button type="submit"
                     onClick={evt => {
                         evt.preventDefault()
-                        createNewComment(props)
+                        createNewComment(props).then(() => {
+                            subject.current.value = ""
+                            content.current.value = ""
+                        }).then(getComments)
                     }}
                     className="commentForm_btn">Comment</button>
             </form>
