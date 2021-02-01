@@ -1,8 +1,10 @@
 import React, { useContext, useEffect, useRef } from "react";
+import { useHistory } from "react-router-dom"
 import { PostContext } from "./PostProvider"
 
-export const PostForm = (props) => {
+export const PostForm = () => {
     const { getPosts, addPost} = useContext(PostContext)
+    const history = useHistory()
 
     const title = useRef(null)
     const imageUrl = useRef(null)
@@ -17,15 +19,15 @@ export const PostForm = (props) => {
     
     const addNewPost = () => {
         addPost({ 
-            userId,
-            categoryId,
-            title,
+            userId: parseInt(localStorage.getItem("rare_user_id")),
+            categoryId: 2,
+            title: title.current.value,
             publicationDate: Date.now(),
-            imageUrl,
-            content,
-            approved
+            imageUrl: imageUrl.current.value,
+            content: content.current.value,
+            approved: 1
         })
-        .then(() => props.history.push("/myPosts"))
+        .then(() => history.push("/"))
     }
     return (
         
