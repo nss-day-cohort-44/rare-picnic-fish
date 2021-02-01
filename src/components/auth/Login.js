@@ -11,22 +11,21 @@ export const Login = () => {
 
     const handleLogin = (e) => {
         e.preventDefault()
-
-        return fetch("http://localhost:8088/users", {
+        
+        return fetch("http://localhost:8088/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json"
             },
             body: JSON.stringify({
-                username: email.current.value,
+                email: email.current.value,
                 password: password.current.value
             })
         })
             .then(res => res.json())
             .then(res => {
                 if ("valid" in res && res.valid) { 
-                    debugger
                     localStorage.setItem("rare_user_id", res.token )
                     history.push("/")
                 }
