@@ -9,7 +9,7 @@ export const TagList = ({props}) => {
         getTags()
         
     }, [])
-
+    
     return (
         <>
             <section className="tags">

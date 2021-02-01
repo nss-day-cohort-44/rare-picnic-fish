@@ -11,6 +11,7 @@ import { UserPostList } from "./posts/UserPostList.js"
 import { PostProvider } from "./posts/PostProvider"
 import { TagProvider } from './tags/TagProvider'
 import { TagList } from './tags/TagList'
+import { TagForm } from './tags/TagForm'
 
 
 
@@ -54,6 +55,9 @@ export const ApplicationViews = (props) => {
 
                 <Route exact path="/tags" render={
                     props => <TagList {...props} />
+                } />
+                <Route exact path="/tags" render={
+                    props => <TagForm {...props} />
                 } />
 
             </TagProvider>
