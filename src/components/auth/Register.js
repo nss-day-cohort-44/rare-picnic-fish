@@ -44,7 +44,7 @@ export const Register = () => {
                 .then(res => {
                     if ("valid" in res && res.valid) {
                         localStorage.setItem("rare_user_id", res.token)
-                        props.history.push("/")
+                        history.push("/")
                     }
                 })
         } else {
