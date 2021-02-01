@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react"
 import { CommentContext } from "./CommentsProvider"
-import Comment from "./Comment"
+import { Comment } from "./Comment"
 import "./Comment.css"
 
 
