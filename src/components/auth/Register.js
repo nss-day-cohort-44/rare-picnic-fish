@@ -1,9 +1,5 @@
 import React, { useRef } from "react"
-<<<<<<< HEAD
-import { Link } from "react-router-dom"
-=======
 import { Link, useHistory } from "react-router-dom"
->>>>>>> main
 import "./Auth.css"
 
 export const Register = () => {
@@ -16,12 +12,7 @@ export const Register = () => {
     const passwordDialog = useRef()
     const username = useRef()
     const profileImageUrl = useRef()
-<<<<<<< HEAD
-
-
-=======
     const history = useHistory()
->>>>>>> main
 
     const handleRegister = (e) => {
         e.preventDefault()
