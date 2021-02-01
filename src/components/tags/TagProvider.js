@@ -25,10 +25,10 @@ export const TagProvider = (props) => {
     }
 
     return (
-        <UserContext.Provider value={{
+        <TagContext.Provider value={{
             tags, getTags, addTag
         }}>
             {props.children}
-        </UserContext.Provider>
+        </TagContext.Provider>
     )
 }
