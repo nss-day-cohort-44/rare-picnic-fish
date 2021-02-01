@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from "react"
-// import { PostContext } from "./PostProvider"
+import { PostContext } from "./PostProvider"
 
 export const PostDetail = (props) => {
     const { getPostById } = useContext(PostContext)
 
-    const [post, setPost] = useState({ location: {}, customer: {}})
+    const [post, setPost] = useState({ user: {}, category: {} })
 
     useEffect(() => {
         const postId = parseInt(props.match.params.postId)
