@@ -65,7 +65,12 @@ return (
             className="btn btn-primary">
             Save Category
         </button>
-        </section>
+
+        <button type="submit" className="button" 
+            onClick={() =>
+                    props.history.push("/categories")}>
+            Cancel
+        </button>    
+    </section>
     </form>
 )}
-    
