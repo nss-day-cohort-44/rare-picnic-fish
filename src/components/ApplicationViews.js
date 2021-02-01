@@ -54,10 +54,10 @@ export const ApplicationViews = (props) => {
             <TagProvider>
 
                 <Route exact path="/tags" render={
-                    props => <TagList {...props} />
+                    props => <TagForm {...props} />
                 } />
                 <Route exact path="/tags" render={
-                    props => <TagForm {...props} />
+                    props => <TagList {...props} />
                 } />
 
             </TagProvider>
