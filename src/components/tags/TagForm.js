@@ -1,10 +1,9 @@
-import React, { useContext, useRef, useEffect, useState } from "react"
+import React, { useContext, useRef, useEffect } from "react"
 import { TagContext } from './TagProvider'
 
 export const TagForm = (props) => {
 
-    const { tags, addTag, getTags } = useContext(TagContext)
-    const [ newTag, setNewTag ] = useState("")
+    const { addTag, getTags } = useContext(TagContext)
 
     const label = useRef(null)
 
@@ -14,28 +13,18 @@ export const TagForm = (props) => {
 
     }, [])
 
-    useEffect(() => {
-
-
-
-
-    }, [tags])
 
     const constructNewTag = () => {
 
         const tagName = label.current.value
-        setNewTag(tagName)
-        if (newTag === "") {
+        if (tagName === "") {
             window.alert("Please enter a label")
-
-        } 
-        else {
-
-        addTag(
-            {
-                label: newTag
-            })
-            .then(() => props.history.push("/tags"))
+        } else {
+            return addTag(
+                {
+                    label: tagName
+                }
+            )
         }
     }
 
@@ -51,7 +40,10 @@ export const TagForm = (props) => {
             <button type="submit"
                 onClick={evt => {
                     evt.preventDefault() // Prevent browser from submitting the form
-                    constructNewTag()
+                    constructNewTag(props).then(() => {
+                        label.current.value = ""
+
+                    }).then(getTags)
                 }}
                 className="btn btn-primary">
                 Save Tag
