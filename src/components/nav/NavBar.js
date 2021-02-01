@@ -25,6 +25,10 @@ export const NavBar = () => {
             </li>
             <li className="navbar__item">
                 <Link className="navbar__link"  to={(localStorage.getItem("rare_user_id") === null) ?
+                "/login":"/tags"}>Tag Manager</Link>
+            </li>
+            <li className="navbar__item">
+                <Link className="navbar__link"  to={(localStorage.getItem("rare_user_id") === null) ?
                 "/login":"/newPost"}>New Post</Link>
             </li>
             <li className="navbar__item">
