@@ -6,9 +6,13 @@ import { Categoryform } from "./category/CategoryForm"
 import { CategoryDetail } from "./category/CategoryDetail"
 import { CategoryEditForm } from "./category/CategoryEditForm"
 import { PostForm } from "./posts/PostForm"
-import { PostList } from "./posts/PostList.js"
+import { PostDetail } from "./posts/PostDetail"
+import { PostList } from "./posts/PostList"
 import { UserPostList } from "./posts/UserPostList.js"
 import { PostProvider } from "./posts/PostProvider"
+import { CommentsProvider } from "./comments/CommentsProvider"
+import { CommentList } from "./comments/CommentList"
+import { CommentForm } from "./comments/CommentForm"
 import { TagProvider } from './tags/TagProvider'
 import { TagList } from './tags/TagList'
 import { TagForm } from './tags/TagForm'
@@ -24,6 +28,7 @@ export const ApplicationViews = (props) => {
         }}>
         </main> */}
             <PostProvider>
+
                 <Route exact path="/">
                     <PostList />
                 </Route>
@@ -59,9 +64,23 @@ export const ApplicationViews = (props) => {
                 <Route exact path="/tags" render={
                     props => <TagList {...props} />
                 } />
-
             </TagProvider>
 
-        </>
-    )
-}
+            <PostProvider>
+                <CommentsProvider>
+                    <Route exact path = "/newPost">
+                        <PostForm {...props} />
+                    </Route>
+
+                    <Route exact path = "/post/comments/:postId(\d+)" render = {
+                        props => <CommentList {...props} />
+                    }/>
+
+                    <Route path = "/post/comments/:postId(\d+)" render = {
+                        props => <CommentForm {...props} />
+                    }/>
+                </CommentsProvider>
+            </PostProvider>
+    </>
+)}
+

@@ -9,7 +9,7 @@ export const UserPost = ({ post }) => {
         return(
             <section className="post">
         <h3 className="post__name">
-            <Link to={`/posts/${post.user_id}`}>
+            <Link to={`/posts/${post.id}`}>
                 {post.title}
             </Link>
         </h3>
