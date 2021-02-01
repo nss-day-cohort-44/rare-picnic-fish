@@ -22,7 +22,7 @@ if(label === ""){
     addCategory({
         label:label.current.value
     })
-    .then(() => props.history.push("/"))
+    .then(() => props.history.push("/categories"))
  }
 }
 return (
