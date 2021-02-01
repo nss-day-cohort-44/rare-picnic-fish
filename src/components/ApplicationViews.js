@@ -6,7 +6,8 @@ import { Categoryform } from "./category/CategoryForm"
 import { CategoryDetail } from "./category/CategoryDetail"
 import { CategoryEditForm } from "./category/CategoryEditForm"
 import { PostForm } from "./posts/PostForm"
-import { PostList } from "./posts/PostList.js"
+import { PostDetail } from "./posts/PostDetail"
+import { PostList } from "./posts/PostList"
 import { UserPostList } from "./posts/UserPostList.js"
 import { PostProvider } from "./posts/PostProvider"
 import { TagProvider } from './tags/TagProvider'
@@ -24,6 +25,7 @@ export const ApplicationViews = (props) => {
         }}>
         </main> */}
             <PostProvider>
+
                 <Route exact path="/">
                     <PostList />
                 </Route>
