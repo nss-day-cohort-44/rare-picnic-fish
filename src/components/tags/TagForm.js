@@ -19,15 +19,12 @@ export const TagForm = (props) => {
         const tagName = label.current.value
         if (tagName === "") {
             window.alert("Please enter a label")
-
-        } 
-        else {
-
-        addTag(
-            {
-                label: tagName
-            })
-            .then(() => props.history.push("/tags"))
+        } else {
+            return addTag(
+                {
+                    label: tagName
+                }
+            )
         }
     }
 
@@ -43,7 +40,10 @@ export const TagForm = (props) => {
             <button type="submit"
                 onClick={evt => {
                     evt.preventDefault() // Prevent browser from submitting the form
-                    constructNewTag()
+                    constructNewTag(props).then(() => {
+                        label.current.value = ""
+
+                    }).then(getTags)
                 }}
                 className="btn btn-primary">
                 Save Tag
