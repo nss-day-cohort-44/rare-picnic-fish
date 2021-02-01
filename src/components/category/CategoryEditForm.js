@@ -5,14 +5,14 @@ import "./category.css"
 
 export const CategoryEditForm = (props) =>{
     const{category,getCategory,updateCategory} = useContext(CategoryContext)
-
+  
     const[Category,setCategory] = useState({})
 
     const editMode = props.match.params.hasOwnProperty("categoryId")
 
-const handleControlledInputChange = (label) => {
+const handleControlledInputChange = (event) => {
     const newCategory = Object.assign({}, Category)
-    newCategory[label.target.name] = label.target.value
+    newCategory[event.target.name] = event.target.value
     setCategory(newCategory)
     }
 
@@ -25,7 +25,7 @@ const handleControlledInputChange = (label) => {
     useEffect(() =>{
         getCategory()
     },[])
-    console.log(Category)
+    // console.log(Category)
     
     useEffect(() =>{
         getCategoryInEditMode()
@@ -33,24 +33,26 @@ const handleControlledInputChange = (label) => {
 
 const constructNewCategory = () => {
     const categoryId = parseInt(props.match.params.categoryId)
+    // console.log(categoryId)
     if(categoryId === 0){
         window.alert("please select a Label" )
     }else{
         if (editMode){
         updateCategory({
-            label:category.label
+            id: Category.id,
+            label:Category.label
         })
-        .then(() => props.history.push("/"))}
+        .then(() => props.history.push("/categories"))}
     }}
 
 return (
     <form className ="CategoryForm">
-    <h2 className="userForm__title">Add New Category</h2>
+    <h2 className="userForm__title">Update Category</h2>
     <fieldset>
             <div className="form-group">
                 <label htmlFor="categoryName">Category label: </label>
-                <input type="text" id="categoryName" required autoFocus className="form-control"
-                placeholder="Category label" value={category.label} onChange={handleControlledInputChange} />
+                <input type="text" name="label" id="categoryName" required autoFocus className="form-control"
+                placeholder="Category label" value={Category.label} onChange={handleControlledInputChange}  />
             </div>
     </fieldset>
 

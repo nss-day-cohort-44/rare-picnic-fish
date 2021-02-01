@@ -14,7 +14,7 @@ useEffect(() =>{
 
 
 
-console.log(category)
+// console.log(category)
 return (
     <>
    <section className="users"> 
