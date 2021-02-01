@@ -9,7 +9,7 @@ export const TagProvider = (props) => {
 
         return fetch("http://localhost:8088/tags")
         .then(res => res.json())
-        .then(res => res.sort((a,b)=>(a.label > b.label) ? 1 : -1))
+        
         .then(setTags)
     }
 

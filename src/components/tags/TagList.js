@@ -10,12 +10,14 @@ export const TagList = ({props}) => {
         
     }, [])
     
+    const sortedTags = tags.sort((a,b)=>(a.label > b.label) ? 1 : -1)
+
     return (
         <>
             <section className="tags">
                 <div>
                     {
-                        tags.map( t => {
+                        sortedTags.map( t => {
                             return <Tag key={t.id} tag={t} />
                         } )
                     }
