@@ -5,7 +5,7 @@ export const Post = ({ post }) => (
     <section className="post">
         <h3 className="post__name">
             <Link to={(localStorage.getItem("rare_user_id") === null) ?
-                "/login":`/posts/${post.user_id}`}>
+                "/login":`/posts/${post.id}`}>
                 {post.title}
             </Link>
         </h3>
