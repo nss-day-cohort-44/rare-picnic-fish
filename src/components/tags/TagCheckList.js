@@ -6,26 +6,39 @@ import { Multiselect } from 'multiselect-react-dropdown'
 
 export const TagCheckList = () => {
     const { tags, getTags } = useContext(TagContext)
-    const [selectedOptions, setSelectionOptions] = useState(tags)
-    
-    
+    const [selectedTags, setSelectedTags] = useState(tags)
+
+    console.log("tags", tags)
+
+
     useEffect(() => {
-        
+
         getTags()
-        
+
     }, [])
-    
+    console.log()
+
+    const onSelect = (selectedTags) => {
+        setSelectedTags(selectedTags)
+        console.log("Selected Options", selectedTags)
+    }
 
     return (
-        <Multiselect
-            defaultValue={[]}
-            name="tags"
-            options={tags}
-            displayValue = "label"
-            className="basic-multi-select"
-            classNamePrefix="select"
-            placeholder="Select Tags"
-        />
+        <div>
+
+            <Multiselect
+                defaultValue={[]}
+                name="tags"
+                options={tags}
+                displayValue="label"
+                className="basic-multi-select"
+                classNamePrefix="select"
+                placeholder="Select Tags"
+
+                onSelect={onSelect}
+
+            />
+        </div>
     )
 }
 
