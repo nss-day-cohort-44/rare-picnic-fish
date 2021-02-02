@@ -10,6 +10,9 @@ import { PostDetail } from "./posts/PostDetail"
 import { PostList } from "./posts/PostList"
 import { UserPostList } from "./posts/UserPostList.js"
 import { PostProvider } from "./posts/PostProvider"
+import { CommentsProvider } from "./comments/CommentsProvider"
+import { CommentList } from "./comments/CommentList"
+import { CommentForm } from "./comments/CommentForm"
 import { TagProvider } from './tags/TagProvider'
 import { TagList } from './tags/TagList'
 import { TagForm } from './tags/TagForm'
@@ -56,14 +59,28 @@ export const ApplicationViews = (props) => {
             <TagProvider>
 
                 <Route exact path="/tags" render={
-                    props => <TagList {...props} />
-                } />
-                <Route exact path="/tags" render={
                     props => <TagForm {...props} />
                 } />
-
+                <Route exact path="/tags" render={
+                    props => <TagList {...props} />
+                } />
             </TagProvider>
 
-        </>
-    )
-}
+            <PostProvider>
+                <CommentsProvider>
+                    <Route exact path = "/newPost">
+                        <PostForm {...props} />
+                    </Route>
+
+                    <Route exact path = "/post/comments/:postId(\d+)" render = {
+                        props => <CommentList {...props} />
+                    }/>
+
+                    <Route path = "/post/comments/:postId(\d+)" render = {
+                        props => <CommentForm {...props} />
+                    }/>
+                </CommentsProvider>
+            </PostProvider>
+    </>
+)}
+
