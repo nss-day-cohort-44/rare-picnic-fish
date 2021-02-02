@@ -1,10 +1,12 @@
 import React from "react"
 import { Link } from "react-router-dom"
+import { Route,useHistory } from "react-router-dom"
 
 
 
 export const UserPost = ({ post }) => {
     // console.log(post)
+    const history = useHistory()
     if(post.user_id ==localStorage.getItem("rare_user_id")){
         return(
             <section className="post">
@@ -15,7 +17,16 @@ export const UserPost = ({ post }) => {
         </h3>
         <div className="post__title"><b>{post.category.label}</b></div>
         <div className="post__title">AUTHOR-{post.user.username}</div>
-        </section>
+       
+            <button className = "post__comment__btn"
+                onClick={evt => {
+                evt.preventDefault() // Prevent browser from submitting the form
+                history.push(`/edit/comments/${post.id}`)
+                 }}>
+                 Edit Post
+            </button>
+            </section>
         )
     } else return null 
 }
+
