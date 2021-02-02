@@ -5,10 +5,11 @@ import "./Comment.css"
 
 
 export const CommentList = (props) => {
-    const { comments, getComments } = useContext(CommentContext)
-
+    const { comments, getCommentsByPostId } = useContext(CommentContext)
+    const postId = parseInt(props.match.params.postId)
+    
     useEffect(() => {
-        getComments()
+        getCommentsByPostId(postId)
     }, [])
 
     return (
