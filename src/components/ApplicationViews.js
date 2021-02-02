@@ -16,6 +16,7 @@ import { CommentForm } from "./comments/CommentForm"
 import { TagProvider } from './tags/TagProvider'
 import { TagList } from './tags/TagList'
 import { TagForm } from './tags/TagForm'
+import { TagCheckList } from "./tags/TagCheckList"
 
 
 
@@ -28,17 +29,20 @@ export const ApplicationViews = (props) => {
         }}>
         </main> */}
             <PostProvider>
+                <TagProvider>
 
-                <Route exact path="/">
-                    <PostList />
-                </Route>
-                <Route exact path="/myPosts" render={
-                    props => <UserPostList {...props} />
-                } />
-                <Route exact path="/newPost" render={
-                    props => <PostForm {...props} />
-                } />
+                    <Route exact path="/">
+                        <PostList />
+                    </Route>
+                    <Route exact path="/myPosts" render={
+                        props => <UserPostList {...props} />
+                    } />
+                    <Route exact path="/newPost">
+                        <PostForm {...props} />
+                        <TagCheckList {...props} />
+                    </Route>
 
+                </TagProvider>
             </PostProvider>
             <CategoryProvider>
 
@@ -68,19 +72,17 @@ export const ApplicationViews = (props) => {
 
             <PostProvider>
                 <CommentsProvider>
-                    <Route exact path = "/newPost">
-                        <PostForm {...props} />
-                    </Route>
 
-                    <Route exact path = "/post/comments/:postId(\d+)" render = {
+                    <Route exact path="/post/comments/:postId(\d+)" render={
                         props => <CommentList {...props} />
-                    }/>
-
-                    <Route path = "/post/comments/:postId(\d+)" render = {
+                    } />
+                    <Route path="/post/comments/:postId(\d+)" render={
                         props => <CommentForm {...props} />
-                    }/>
+                    } />
+
                 </CommentsProvider>
             </PostProvider>
-    </>
-)}
+        </>
+    )
+}
 
