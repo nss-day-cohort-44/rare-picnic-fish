@@ -33,10 +33,17 @@ const updateCategory = category =>{
     .then(getCategory)
 }
 
+const deleteCategory = categoryId=> {
+    return fetch(`http://localhost:8088/categories/${categoryId}`, {
+        method: "DELETE"
+    })
+        .then(getCategory)
+}
+
 
 return(
     <CategoryContext.Provider value = {{
-        category,getCategory,addCategory,updateCategory
+        category,getCategory,addCategory,updateCategory,deleteCategory
             }}>
         {props.children}
     </CategoryContext.Provider>
