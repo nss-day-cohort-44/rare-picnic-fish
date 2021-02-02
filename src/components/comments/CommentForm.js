@@ -3,12 +3,14 @@ import { CommentContext } from "./CommentsProvider"
 import "./Comment.css"
 
 export const CommentForm = (props) => {
-    const { comments, addComment, getComments } = useContext(CommentContext)
+    const { comments, addComment, getCommentsByPostId } = useContext(CommentContext)
     const content = useRef("")
     const subject = useRef("")
 
+    const postId = parseInt(props.match.params.postId)
+
     useEffect(() => {
-        getComments()
+        getCommentsByPostId(postId)
     }, [])
 
 
@@ -49,7 +51,7 @@ export const CommentForm = (props) => {
                         createNewComment(props).then(() => {
                             subject.current.value = ""
                             content.current.value = ""
-                        }).then(getComments)
+                        }).then(() => getCommentsByPostId(postId))
                     }}
                     className="commentForm_btn">Comment</button>
             </form>

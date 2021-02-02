@@ -5,8 +5,8 @@ export const CommentContext = React.createContext()
 export const CommentsProvider = (props) => {
     const [comments, setComments] = useState([])
 
-    const getComments = () => {
-        return fetch("http://localhost:8088/comments")
+    const getCommentsByPostId = (postId) => {
+        return fetch(`http://localhost:8088/comments/${postId}`)
         .then(res => res.json())
         .then(setComments)
     }
@@ -19,12 +19,12 @@ export const CommentsProvider = (props) => {
             },
             body: JSON.stringify(comment)
         })
-        .then(getComments)
+        .then(getCommentsByPostId)
     }
 
     return (
         <CommentContext.Provider value = {{
-            comments, addComment, getComments
+            comments, addComment, getCommentsByPostId
         }}>
             {props.children}
         </CommentContext.Provider>
