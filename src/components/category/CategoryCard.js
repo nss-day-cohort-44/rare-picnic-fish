@@ -23,7 +23,6 @@ export const CategoryCard  = ({category}) =>{
     }
 
 
-
 return(
     <>
     <section className="categories">   
