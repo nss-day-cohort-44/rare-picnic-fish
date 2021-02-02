@@ -17,7 +17,7 @@ export const Post = ({ post }) => {
             <button className = "post__comment__btn"
                 onClick={evt => {
                     evt.preventDefault() // Prevent browser from submitting the form
-                    history.push(`/post/comments/${post.id}`)
+                    history.push(`/comments/${post.id}`)
                 }}>
                 View Comments
             </button>
