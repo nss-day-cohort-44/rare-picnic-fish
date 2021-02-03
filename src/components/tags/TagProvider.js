@@ -26,7 +26,7 @@ export const TagProvider = (props) => {
     }
 
     const addPostTag = postTag => {
-        return fetch("http://localhost:8088/tags", {
+        return fetch("http://localhost:8088/posttags", {
             method: "POST",
             headers: {
                 'Content-type': 'application/json'
