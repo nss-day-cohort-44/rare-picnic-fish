@@ -37,13 +37,14 @@ const getCategoryInEditMode = () => {
     }else{
         if(editMode){
             updatePost ({
-                user_id : Post.user_id,
+                userId : Post.userId,
                 categoryId: Post.categoryId,
                 title: Post.title,
                 content: Post.content,
                 imageUrl: Post.imageUrl,
                 publicationDate:Post.publicationDate,
-                approved: Post.approved
+                approved: Post.approved,
+                id: Post.id
             })
             .then(() => props.history.push("/myPosts"))
     }}

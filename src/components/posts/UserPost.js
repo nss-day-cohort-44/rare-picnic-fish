@@ -9,7 +9,7 @@ export const UserPost = ({ post }) => {
     const history = useHistory()
     // console.log(post)
    
-    if(post.user_id ==localStorage.getItem("rare_user_id")){
+    if(post.userId ==localStorage.getItem("rare_user_id")){
         return(
             <section className="post">
         <h3 className="post__name">
