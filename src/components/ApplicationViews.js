@@ -8,6 +8,7 @@ import { CategoryEditForm } from "./category/CategoryEditForm"
 import { PostForm } from "./posts/PostForm"
 import { PostDetail } from "./posts/PostDetail"
 import { PostList } from "./posts/PostList"
+import {PostEditForm} from "./posts/PostEditForm"
 import { UserPostList } from "./posts/UserPostList.js"
 import { PostProvider } from "./posts/PostProvider"
 import { CommentsProvider } from "./comments/CommentsProvider"
@@ -91,8 +92,11 @@ export const ApplicationViews = (props) => {
 
                     <Route path="/comments/:postId(\d+)" render={
                         props => <CommentForm {...props} />
-                    } />
+                    }/>
 
+                    <Route path = "/edit/comments/:postId(\d+)" render = {
+                        props => <PostEditForm {...props} />
+                    }/> 
                 </CommentsProvider>
             </PostProvider>
         </>

@@ -21,6 +21,14 @@ export const Post = ({ post }) => {
                 }}>
                 View Comments
             </button>
+
+            <button className = "post__comment__btn"
+                onClick={evt => {
+                    evt.preventDefault() // Prevent browser from submitting the form
+                    history.push(`/edit/comments/${post.id}`)
+                }}>
+                Edit Post
+            </button>
         </section>
     )
 }
