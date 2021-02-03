@@ -3,12 +3,12 @@ import { Link } from "react-router-dom"
 import { Route,useHistory } from "react-router-dom"
 
 
-import { Link, useHistory } from "react-router-dom"
+// import { Link, useHistory } from "react-router-dom"
 
 export const UserPost = ({ post }) => {
     const history = useHistory()
     // console.log(post)
-    const history = useHistory()
+   
     if(post.user_id ==localStorage.getItem("rare_user_id")){
         return(
             <section className="post">
@@ -27,7 +27,7 @@ export const UserPost = ({ post }) => {
                  }}>
                  Edit Post
             </button>
-                <h3 className="post__name">
+                {/* <h3 className="post__name">
                     <Link to={`/posts/${post.id}`}>
                         {post.title}
                     </Link>
@@ -40,7 +40,7 @@ export const UserPost = ({ post }) => {
                             history.push(`/comments/${post.id}`)
                         }}>
                         View Comments
-                </button>
+                </button> */}
             </section>
         )
     } else return null 
