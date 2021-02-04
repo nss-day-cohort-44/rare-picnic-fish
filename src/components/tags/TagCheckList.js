@@ -26,7 +26,7 @@ export const TagCheckList = (props) => {
         // newEvent[e.target.name] = e.target.value
         setSelectedTags(newPostTag)
     }
-    // console.log("selectedTags", selectedTags)
+    console.log("selectedTags", selectedTags)
 
     useEffect(() => {
 
@@ -54,7 +54,7 @@ export const TagCheckList = (props) => {
                 <Multiselect defaultValue={[]} name="tags" options={tags} displayValue="label" className="basic-multi-select"
                     classNamePrefix="select" placeholder="Select Tags" onSelect={handleControlledInputChange} />
 
-                <button type="submit"
+                <button type="submit" type="button"
                     onClick={evt => {
                         evt.preventDefault()
                         constructPostTags()
